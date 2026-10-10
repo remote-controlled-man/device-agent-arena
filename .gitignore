@@ -1,0 +1,57 @@
+.venv/
+.uv-cache/
+.hf-cache/
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest-tmp/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+.env*
+!.env.example
+*.log
+
+# Local training caches and model outputs. Canonical metadata is copied into a
+# public export only through public-release.toml; the local evidence stays intact.
+artifacts/checkpoints/*
+!artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1/
+artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1/*
+!artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1/device_agent_arena_training_result.json
+!artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-refinement-qlora-v0.2/
+artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-refinement-qlora-v0.2/*
+!artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-refinement-qlora-v0.2/device_agent_arena_training_result.json
+!artifacts/checkpoints/functiongemma-270m-deviceops-v2.5-full-sft-stage4/
+artifacts/checkpoints/functiongemma-270m-deviceops-v2.5-full-sft-stage4/*
+!artifacts/checkpoints/functiongemma-270m-deviceops-v2.5-full-sft-stage4/device_agent_arena_training_result.json
+artifacts/models/
+artifacts/cache/
+artifacts/contractgraph/
+artifacts/reports/
+artifacts/research/
+artifacts/runs/
+artifacts/training/
+artifacts/v1/
+artifacts/v2/*
+!artifacts/v2/layered/
+!artifacts/v2/layered/**
+
+# Large generated curricula remain local. Frozen benchmark suites under nested
+# data/v2 directories are not matched by these root-level patterns.
+data/train/
+data/v1/
+data/v2/*.json
+data/v2/*.jsonl
+!data/v2/functiongemma-native-sft-v2.5.1-composition.manifest.json
+!data/v2/qwen3-composition-sft-v2.7.0.jsonl
+!data/v2/qwen3-composition-sft-v2.7.0.manifest.json
+!data/v2/qwen3-composition-refinement-sft-v2.7.1.jsonl
+!data/v2/qwen3-composition-refinement-sft-v2.7.1.manifest.json
+
+# Internal iteration state and local public exports are not release content.
+docs/agent/
+device-agent-arena-public/
+wandb/

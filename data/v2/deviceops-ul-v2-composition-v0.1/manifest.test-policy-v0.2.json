@@ -1,0 +1,12 @@
+{
+  "base_manifest_sha256": "a1c7ad0bc7282409e5102b3caf8af8112c05a745ef7b46b2d54727a974653abf",
+  "effective_date": "2026-09-02",
+  "format_version": "deviceops-ul-v2-test-policy-amendment-v0.2",
+  "legacy_root_seed_scope": "train-and-dev-only",
+  "official_test": {
+    "record_count": 90,
+    "seed_policy": "independent-256-bit-external-secret-after-full-v2-dev-gate",
+    "status": "locked-unmaterialized"
+  },
+  "reason": "The legacy manifest root_seed could reconstruct a provisional test candidate. The official Test is now defined only by an external secret that is absent from the repository."
+}

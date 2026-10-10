@@ -1,0 +1,30 @@
+{
+  "curriculum_source_counts": {
+    "composition-oracle": 1260,
+    "composition-recovery": 660
+  },
+  "data_sha256": "accb304b00cbfb6503835a7d6f03a56a5b43e0c899adbbc693266673166c94e2",
+  "decision_counts": {
+    "apply_action": 210,
+    "finish_task": 150,
+    "inspect_relations": 180,
+    "inspect_target": 630,
+    "poll_action": 210,
+    "refuse_task": 210,
+    "request_user_action": 330
+  },
+  "dev_data_used": false,
+  "format_version": "deviceops-ul-v2-qwen-composition-sft-manifest-v0.1",
+  "hidden_marker_count": 30,
+  "hidden_marker_leaks": 0,
+  "oracle_repeats": 2,
+  "oracle_source_record_count": 630,
+  "protocol": "qwen-tool-native-v2-composition",
+  "record_count": 1920,
+  "recovery_repeats": 4,
+  "recovery_source_record_count": 165,
+  "sha256": "accb304b00cbfb6503835a7d6f03a56a5b43e0c899adbbc693266673166c94e2",
+  "suite_manifest_sha256": "a1c7ad0bc7282409e5102b3caf8af8112c05a745ef7b46b2d54727a974653abf",
+  "test_data_used": false,
+  "test_policy_amendment_sha256": "4ac944820dddf7c3d99bcacf2b82c849679dbe95c23d97386220efb4e58ea113"
+}

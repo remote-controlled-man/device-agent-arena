@@ -1,0 +1,83 @@
+{
+  "baseline": {
+    "end_to_end_latency_p50_ms": 31136.075,
+    "end_to_end_latency_p95_ms": 59426.964,
+    "fast_path": {
+      "acceptance_rate": 0.0,
+      "accepted_call_count": 0,
+      "eligible_call_count": 0,
+      "fallback_count": 0
+    },
+    "generation_ms": 1116809.89,
+    "goal_completion_rate": 0.7222222222222222,
+    "input_tokens": 381032,
+    "mean_milestone_coverage": 0.8837962962962963,
+    "minefield_violation_rate": 0.05555555555555555,
+    "planner_call_count": 261,
+    "safe_execution_rate": 0.9444444444444444,
+    "safe_strict_success_rate": 0.6111111111111112,
+    "total_model_call_count": 261
+  },
+  "baseline_agent_id": "v2-composition-model:.hf-cache\\hub\\models--Qwen--Qwen3-1.7B\\snapshots\\70d244cc86ccca08cf5af4e1e306ecf908b1ad5e+qwen3-1.7b-deviceops-v2.7-composition-refinement-qlora-v0.2",
+  "bootstrap": {
+    "method": "paired-percentile",
+    "samples": 10000,
+    "seed": 20260904
+  },
+  "candidate": {
+    "end_to_end_latency_p50_ms": 30330.286,
+    "end_to_end_latency_p95_ms": 48989.234,
+    "fast_path": {
+      "acceptance_rate": 0.8770491803278688,
+      "accepted_call_count": 107,
+      "eligible_call_count": 122,
+      "fallback_count": 15
+    },
+    "generation_ms": 1046994.838,
+    "goal_completion_rate": 0.9166666666666666,
+    "input_tokens": 418862,
+    "mean_milestone_coverage": 0.9594907407407409,
+    "minefield_violation_rate": 0.05555555555555555,
+    "planner_call_count": 172,
+    "safe_execution_rate": 0.9444444444444444,
+    "safe_strict_success_rate": 0.8611111111111112,
+    "total_model_call_count": 294
+  },
+  "candidate_agent_id": "v2-composition-layered:artifacts\\checkpoints\\functiongemma-270m-deviceops-v2.5-full-sft-stage4=>.hf-cache\\hub\\models--Qwen--Qwen3-1.7B\\snapshots\\70d244cc86ccca08cf5af4e1e306ecf908b1ad5e+qwen3-1.7b-deviceops-v2.7-composition-refinement-qlora-v0.2",
+  "format_version": "deviceops-ul-v2-composition-paired-comparison-v0.1",
+  "paired_delta": {
+    "ci95_high": 0.3888888888888889,
+    "ci95_low": 0.1111111111111111,
+    "generation_ms": -69815.05199999991,
+    "input_tokens": 37830,
+    "losses": 0,
+    "mean_milestone_coverage": 0.07569444444444445,
+    "planner_call_count": -89,
+    "safe_strict_success_rate": 0.25,
+    "ties": 27,
+    "total_model_call_count": 33,
+    "wins": 9
+  },
+  "protocol_checks": {
+    "harness_config_match": true,
+    "planner_fields": {
+      "adapter_path": true,
+      "adapter_sha256": true,
+      "chat_template_sha256": true,
+      "load_in_4bit": true,
+      "max_new_tokens": true,
+      "model_artifact_sha256": true,
+      "model_id": true,
+      "temperature": true
+    },
+    "planner_identity_match": true,
+    "protocol_match": true,
+    "source_tree_match": true,
+    "strict_protocol_match": true,
+    "task_ids_match": true,
+    "task_suite_match": true
+  },
+  "split": "dev",
+  "task_count": 36,
+  "task_suite_sha256": "bd05644001910f14c2cf02897d4e997407a4fdf668198b7514fedbc0f20de56d"
+}

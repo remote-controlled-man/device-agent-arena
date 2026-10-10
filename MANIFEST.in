@@ -1,0 +1,13 @@
+include README.md
+include README.zh-CN.md
+include LICENSE
+include NOTICE
+include SECURITY.md
+include CONTRIBUTING.md
+include public-release.toml
+include uv.lock
+recursive-include configs *.json
+recursive-include contracts *.json
+recursive-include data/v2/deviceops-ul-v2-composition-v0.1 *.json *.jsonl
+exclude data/v2/deviceops-ul-v2-composition-v0.1/test.jsonl
+recursive-include docs *.md

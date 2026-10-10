@@ -1,0 +1,30 @@
+{
+  "format_version": "0.3",
+  "model_id": "artifacts/checkpoints/functiongemma-270m-deviceops-v2.3-full-sft-stage2",
+  "model_revision": null,
+  "train_data": "data/v2/functiongemma-native-sft-v2.5.1-composition.jsonl",
+  "train_manifest": "data/v2/functiongemma-native-sft-v2.5.1-composition.manifest.json",
+  "output_dir": "artifacts/checkpoints/functiongemma-270m-deviceops-v2.5-full-sft-stage4",
+  "seed": 20260902,
+  "max_length": 2304,
+  "num_train_epochs": 1.0,
+  "max_steps": -1,
+  "per_device_train_batch_size": 1,
+  "gradient_accumulation_steps": 16,
+  "learning_rate": 0.000005,
+  "lr_scheduler_type": "cosine",
+  "warmup_ratio": 0.05,
+  "logging_steps": 10,
+  "save_strategy": "epoch",
+  "gradient_checkpointing": true,
+  "training_mode": "full",
+  "quantization": {
+    "load_in_4bit": false,
+    "quant_type": "nf4",
+    "double_quant": true,
+    "compute_dtype": "bfloat16"
+  },
+  "lora": null,
+  "initial_adapter": null,
+  "attn_implementation": "sdpa"
+}

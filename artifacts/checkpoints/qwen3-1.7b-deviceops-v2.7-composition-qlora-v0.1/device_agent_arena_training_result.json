@@ -1,0 +1,95 @@
+{
+  "adapter": {
+    "path": "artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1/adapter_model.safetensors",
+    "sha256": "937855a92c05eb46edaee2aa580a612356f007c1907251f65c0094b8a26d41e9",
+    "size_bytes": 34917504
+  },
+  "config_sha256": "c12407805b2afe827d03786739d6aba6791b1b462863f0db78c4362b5eb7c086",
+  "cuda_device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "dataset": {
+    "manifest": "data/v2/qwen3-composition-sft-v2.7.0.manifest.json",
+    "path": "data/v2/qwen3-composition-sft-v2.7.0.jsonl",
+    "record_count": 1920,
+    "sha256": "accb304b00cbfb6503835a7d6f03a56a5b43e0c899adbbc693266673166c94e2"
+  },
+  "dependency_lock_sha256": "216bf8615134b26ccc79490fd45a6158d2c7c00473ff8ff196423ff7958d8982",
+  "effective_batch_size": 8,
+  "environment": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.7"
+  },
+  "initial_adapter": "artifacts/checkpoints/qwen3-1.7b-deviceops-ul-v1.2-grounded-curriculum-qlora",
+  "initial_adapter_provenance": {
+    "config_sha256": "eceddcb4df0db12e6d21d01a06d14edc2b97f85a294c4e8bae5d02298775e4ab",
+    "model_sha256": "3960280e8e6567ce88cbb0afd7bb2734d08caa9f7c509299a24c0ee1b94bbe33",
+    "model_size_bytes": 34917504
+  },
+  "lora": {
+    "alpha": 32,
+    "bias": "none",
+    "dropout": 0.05,
+    "rank": 16,
+    "target_modules": "all-linear"
+  },
+  "max_length": 2304,
+  "model_id": "Qwen/Qwen3-1.7B",
+  "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "note": "QLoRA training completed and adapter artifacts were saved.",
+  "output_dir": "artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1",
+  "package_versions": {
+    "bitsandbytes": "0.50.0",
+    "datasets": "4.8.5",
+    "peft": "0.20.0",
+    "torch": "2.12.1+cu126",
+    "transformers": "5.14.1",
+    "trl": "1.9.2"
+  },
+  "path_format": "project-relative-posix",
+  "peak_vram_mb": 3757.845,
+  "quantization": {
+    "compute_dtype": "bfloat16",
+    "double_quant": true,
+    "load_in_4bit": true,
+    "quant_type": "nf4"
+  },
+  "resolved_compute_dtype": "bfloat16",
+  "resolved_model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "source": {
+    "commit": "ba9fca60d961b2da9c0022f2b5af6837a7cd475a",
+    "dirty": true,
+    "tree_sha256": "08ce9924f1d5f663999982254defe5055334a28159c99a718abce850784dac7f"
+  },
+  "status": "completed",
+  "torch_version": "2.12.1+cu126",
+  "train_metrics": {
+    "epoch": 1.0,
+    "total_flos": 2.44508032576512e+16,
+    "train_loss": 0.08877949351638866,
+    "train_runtime": 4544.889,
+    "train_samples_per_second": 0.422,
+    "train_steps_per_second": 0.053
+  },
+  "trainer_state": "artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1/trainer_state.json",
+  "training_mode": "lora",
+  "training_objective": "completion-only next-agent decision",
+  "training_recipe": {
+    "attn_implementation": null,
+    "gradient_accumulation_steps": 8,
+    "gradient_checkpointing": true,
+    "learning_rate": 2e-05,
+    "logging_steps": 10,
+    "lr_scheduler_type": "cosine",
+    "max_steps": -1,
+    "num_train_epochs": 1.0,
+    "per_device_train_batch_size": 1,
+    "save_strategy": "no",
+    "seed": 20260903,
+    "warmup_ratio": 0.03
+  },
+  "weights": {
+    "kind": "adapter",
+    "path": "artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1/adapter_model.safetensors",
+    "sha256": "937855a92c05eb46edaee2aa580a612356f007c1907251f65c0094b8a26d41e9",
+    "size_bytes": 34917504
+  }
+}

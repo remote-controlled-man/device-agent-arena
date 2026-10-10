@@ -1,0 +1,8 @@
+*.jsonl text eol=lf
+*.json text eol=lf
+*.jinja text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.toml text eol=lf
+uv.lock text eol=lf
+data/eval/v0.1/*.jsonl -text

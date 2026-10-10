@@ -1,0 +1,18 @@
+{
+  "completion_only_loss_verified": true,
+  "data_sha256": "71d535751a759044e6ef4df525308311a66b54d345ff90d1a527127b95e6d9cd",
+  "format_version": "deviceops-ul-functiongemma-token-audit-v2.0",
+  "max_completion_tokens": 67,
+  "max_length": 3072,
+  "max_tokens": 2916,
+  "min_completion_tokens": 29,
+  "min_tokens": 938,
+  "model_path": ".hf-cache/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "p50_tokens": 1605,
+  "p95_tokens": 2525,
+  "prompt_prefix_mismatch_count": 0,
+  "record_count": 1202,
+  "records_with_zero_completion_tokens": 0,
+  "truncation_count": 0,
+  "truncation_rate": 0.0
+}

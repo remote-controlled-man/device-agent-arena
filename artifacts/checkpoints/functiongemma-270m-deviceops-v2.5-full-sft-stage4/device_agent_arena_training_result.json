@@ -1,0 +1,83 @@
+{
+  "config_sha256": "0c58ebd7873326952f3c42f4487e1a95a04c6bd10117931391d36f5ca1276220",
+  "cuda_device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "dataset": {
+    "manifest": "data/v2/functiongemma-native-sft-v2.5.1-composition.manifest.json",
+    "path": "data/v2/functiongemma-native-sft-v2.5.1-composition.jsonl",
+    "record_count": 1985,
+    "sha256": "04a8f0db31987b86047f30ad96333bd9af1e9b6d0d40d1bd7f7cf3af97333d01"
+  },
+  "dependency_lock_sha256": "216bf8615134b26ccc79490fd45a6158d2c7c00473ff8ff196423ff7958d8982",
+  "effective_batch_size": 16,
+  "environment": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.7"
+  },
+  "initial_adapter": null,
+  "initial_adapter_provenance": null,
+  "lora": null,
+  "max_length": 2304,
+  "model_id": "artifacts/checkpoints/functiongemma-270m-deviceops-v2.3-full-sft-stage2",
+  "model_revision": null,
+  "note": "BF16 full-parameter SFT completed and model artifacts were saved.",
+  "output_dir": "artifacts/checkpoints/functiongemma-270m-deviceops-v2.5-full-sft-stage4",
+  "package_versions": {
+    "bitsandbytes": "0.50.0",
+    "datasets": "4.8.5",
+    "peft": "0.20.0",
+    "torch": "2.12.1+cu126",
+    "transformers": "5.14.1",
+    "trl": "1.9.2"
+  },
+  "path_format": "project-relative-posix",
+  "peak_vram_mb": 3394.044,
+  "quantization": {
+    "compute_dtype": "bfloat16",
+    "double_quant": true,
+    "load_in_4bit": false,
+    "quant_type": "nf4"
+  },
+  "resolved_compute_dtype": "bfloat16",
+  "resolved_model_revision": null,
+  "source": {
+    "commit": "ba9fca60d961b2da9c0022f2b5af6837a7cd475a",
+    "dirty": true,
+    "tree_sha256": "f2ebfb69e789cc2e693dfc6265d7e4794af484a01cdb54f7964c870df238a101"
+  },
+  "status": "completed",
+  "torch_version": "2.12.1+cu126",
+  "train_metrics": {
+    "entropy": 0.14171596282349827,
+    "epoch": 1.0,
+    "mean_token_accuracy": 0.9749360332122216,
+    "num_tokens": 2954615.0,
+    "total_flos": 1778548510583040.0,
+    "train_loss": 0.29024615383148195,
+    "train_runtime": 713.5729,
+    "train_samples_per_second": 2.782,
+    "train_steps_per_second": 0.175
+  },
+  "trainer_state": "artifacts/checkpoints/functiongemma-270m-deviceops-v2.5-full-sft-stage4/trainer_state.json",
+  "training_mode": "full",
+  "training_objective": "completion-only next-agent decision",
+  "training_recipe": {
+    "attn_implementation": "sdpa",
+    "gradient_accumulation_steps": 16,
+    "gradient_checkpointing": true,
+    "learning_rate": 5e-06,
+    "logging_steps": 10,
+    "lr_scheduler_type": "cosine",
+    "max_steps": -1,
+    "num_train_epochs": 1.0,
+    "per_device_train_batch_size": 1,
+    "save_strategy": "epoch",
+    "seed": 20260902,
+    "warmup_ratio": 0.05
+  },
+  "weights": {
+    "kind": "full-model",
+    "path": "artifacts/checkpoints/functiongemma-270m-deviceops-v2.5-full-sft-stage4/model.safetensors",
+    "sha256": "03d8c365f132620dce06cfe3c319af2701c7f1c3646c8660e016429538b7e129",
+    "size_bytes": 536223056
+  }
+}

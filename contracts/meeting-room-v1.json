@@ -1,0 +1,104 @@
+{
+  "format_version": "1.0",
+  "catalog_id": "meeting-room-v1",
+  "operations": [
+    {
+      "operation_id": "room.inspect",
+      "role": "inspect",
+      "schema_sha256": "65dae8139257d7d257506296395aafabdfc60a160170103d8f878d5c7d0fabc6",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "inspect_room",
+          "description": "Read the public meeting-room controller state.",
+          "parameters": {"type": "object", "properties": {}, "additionalProperties": false}
+        }
+      },
+      "preconditions": [],
+      "effects": [],
+      "commitments": [],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "room.pair",
+      "role": "repair",
+      "schema_sha256": "928d5c0eed83ee022a85b5cac5a20f88bf178db71f8fa32ff32d3e4b4edfc8f2",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "pair_console",
+          "description": "Pair the meeting-room console.",
+          "parameters": {"type": "object", "properties": {}, "additionalProperties": false}
+        }
+      },
+      "preconditions": [],
+      "effects": [{"set": {"fact": "room.paired", "value": true}}],
+      "commitments": [],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "room.focus",
+      "role": "mutate",
+      "schema_sha256": "60763c83a26137e8b76dbd68398176becf9006de2a9b2dd488a252cb72b3e04e",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "set_focus",
+          "description": "Set the meeting-room camera focus level.",
+          "parameters": {
+            "type": "object",
+            "properties": {"level": {"type": "string", "enum": ["near", "far"]}},
+            "required": ["level"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "preconditions": [
+        {
+          "id": "paired",
+          "fact": "room.paired",
+          "equals": true,
+          "on_unknown": {"operation_id": "room.inspect"},
+          "on_false": {"operation_id": "room.pair"}
+        }
+      ],
+      "effects": [{"set_from_argument": {"fact": "room.focus", "argument": "level"}}],
+      "commitments": [
+        {
+          "id": "focus-level-en",
+          "contains_any": ["focus"],
+          "arguments": {
+            "level": {"enum_mentions": {"near": ["near"], "far": ["far"]}}
+          }
+        }
+      ],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "room.finish",
+      "role": "terminal",
+      "schema_sha256": "8f5811cae2f7e96a9d48df1e26c30f52303c8479faa394e482150b0f52fe145c",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "finish_room_task",
+          "description": "Finish after all requested room changes are complete.",
+          "parameters": {
+            "type": "object",
+            "properties": {"summary": {"type": "string"}},
+            "required": ["summary"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "preconditions": [],
+      "effects": [],
+      "commitments": [],
+      "idempotent": false,
+      "retry": {"max_attempts": 0, "allowed_codes": []}
+    }
+  ]
+}

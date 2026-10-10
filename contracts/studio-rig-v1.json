@@ -1,0 +1,142 @@
+{
+  "format_version": "1.0",
+  "catalog_id": "studio-rig-v1",
+  "operations": [
+    {
+      "operation_id": "studio.inspect",
+      "role": "inspect",
+      "schema_sha256": "608d904a0d34e72b0e49761f8c421c736e41cc9641fa5d8fcac93ba652e67524",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "inspect_rig",
+          "description": "Read the public production-studio rig state.",
+          "parameters": {"type": "object", "properties": {}, "additionalProperties": false}
+        }
+      },
+      "preconditions": [],
+      "effects": [],
+      "commitments": [],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "studio.power",
+      "role": "repair",
+      "schema_sha256": "4c52b412c2525754200fb5724072314374b669d92f6e744ee6b5d4777edd545c",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "power_rig",
+          "description": "Power an offline production-studio rig.",
+          "parameters": {"type": "object", "properties": {}, "additionalProperties": false}
+        }
+      },
+      "preconditions": [],
+      "effects": [{"set": {"fact": "studio.powered", "value": true}}],
+      "commitments": [],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "studio.calibrate",
+      "role": "repair",
+      "schema_sha256": "fd83ba1339d0ff821dcf6f65ae02813100264f63c65bff70719829140cc34e7a",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "calibrate_rig",
+          "description": "Calibrate a powered production-studio rig before scene control.",
+          "parameters": {"type": "object", "properties": {}, "additionalProperties": false}
+        }
+      },
+      "preconditions": [
+        {
+          "id": "powered",
+          "fact": "studio.powered",
+          "equals": true,
+          "on_unknown": {"operation_id": "studio.inspect"},
+          "on_false": {"operation_id": "studio.power"}
+        }
+      ],
+      "effects": [{"set": {"fact": "studio.calibrated", "value": true}}],
+      "commitments": [],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "studio.scene",
+      "role": "mutate",
+      "schema_sha256": "57c8d6296cb148f7a39487de9665e662b29a76649f2a9b588bdba164bbbc2a25",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "set_scene",
+          "description": "Set a calibrated production-studio rig to the requested scene preset.",
+          "parameters": {
+            "type": "object",
+            "properties": {"preset": {"type": "string", "enum": ["portrait", "wide"]}},
+            "required": ["preset"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "preconditions": [
+        {
+          "id": "powered",
+          "fact": "studio.powered",
+          "equals": true,
+          "on_unknown": {"operation_id": "studio.inspect"},
+          "on_false": {"operation_id": "studio.power"}
+        },
+        {
+          "id": "calibrated",
+          "fact": "studio.calibrated",
+          "equals": true,
+          "on_unknown": {"operation_id": "studio.inspect"},
+          "on_false": {"operation_id": "studio.calibrate"}
+        }
+      ],
+      "effects": [{"set_from_argument": {"fact": "studio.scene", "argument": "preset"}}],
+      "commitments": [
+        {
+          "id": "scene-preset-en",
+          "contains_any": ["scene", "preset"],
+          "arguments": {
+            "preset": {
+              "enum_mentions": {
+                "portrait": ["portrait"],
+                "wide": ["wide"]
+              }
+            }
+          }
+        }
+      ],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "studio.finish",
+      "role": "terminal",
+      "schema_sha256": "ed5c8d6cf45f5ac61750cb309501ae1101d7b37ed664a896842aaac60c90c673",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "finish_studio_task",
+          "description": "Finish after all requested studio changes are complete.",
+          "parameters": {
+            "type": "object",
+            "properties": {"summary": {"type": "string"}},
+            "required": ["summary"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "preconditions": [],
+      "effects": [],
+      "commitments": [],
+      "idempotent": false,
+      "retry": {"max_attempts": 0, "allowed_codes": []}
+    }
+  ]
+}

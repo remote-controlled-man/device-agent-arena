@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "device-agent-arena"
+version = "1.0.0"
+description = "A deterministic benchmark and post-training sandbox for stateful Chinese device-control Tool-Use agents."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "Sidi Huang"}]
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+keywords = ["agents", "evaluation", "function-calling", "tool-use", "qlora"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4,<9",
+  "ruff>=0.9,<1",
+]
+train = [
+  "accelerate>=1.2,<2",
+  "bitsandbytes>=0.45,<1",
+  "datasets>=3.2,<5",
+  "jmespath>=1.0,<2",
+  "peft>=0.14,<1",
+  "torch==2.12.1",
+  "transformers>=4.51,<6",
+  "trl>=0.28,<2",
+]
+
+[project.scripts]
+device-agent-arena = "device_agent_arena.cli:entrypoint"
+device-agent-arena-v1 = "device_agent_arena.v1.cli:entrypoint"
+device-agent-arena-v2 = "device_agent_arena.v2.cli:entrypoint"
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib", "--basetemp=.pytest-tmp", "-q"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [
+  ".hf-cache",
+  ".uv-cache",
+  ".venv",
+  "artifacts/checkpoints",
+  "artifacts/models",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

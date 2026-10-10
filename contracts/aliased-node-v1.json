@@ -1,0 +1,137 @@
+{
+  "format_version": "1.0",
+  "catalog_id": "aliased-node-v1",
+  "operations": [
+    {
+      "operation_id": "node.scan",
+      "role": "inspect",
+      "schema_sha256": "051ed3cc3dec7538ca75734aca300bfea041ada65256438c7d86c44602434a7d",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "scan_node",
+          "description": "Read the public state of the target node.",
+          "parameters": {"type": "object", "properties": {}, "additionalProperties": false}
+        }
+      },
+      "preconditions": [],
+      "effects": [],
+      "commitments": [],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "node.bind",
+      "role": "repair",
+      "schema_sha256": "1c6576808b8f552d0b7815407e319c0c4eaeaba6097d19567a93c6593f11439e",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "bind_node",
+          "description": "Bind an offline node to the controller.",
+          "parameters": {"type": "object", "properties": {}, "additionalProperties": false}
+        }
+      },
+      "preconditions": [],
+      "effects": [{"set": {"fact": "node.bound", "value": true}}],
+      "commitments": [],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "node.tune",
+      "role": "repair",
+      "schema_sha256": "de191db7e448082cd6498deb9bbf2b26780d3bac8f8149bf9a36e10fe43cd39c",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "tune_node",
+          "description": "Tune a bound node before precision steering.",
+          "parameters": {"type": "object", "properties": {}, "additionalProperties": false}
+        }
+      },
+      "preconditions": [
+        {
+          "id": "bound",
+          "fact": "node.bound",
+          "equals": true,
+          "on_unknown": {"operation_id": "node.scan"},
+          "on_false": {"operation_id": "node.bind"}
+        }
+      ],
+      "effects": [{"set": {"fact": "node.tuned", "value": true}}],
+      "commitments": [],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "node.aim",
+      "role": "mutate",
+      "schema_sha256": "316f46c80ab4d3825ebd5755e48c6e6dfd6015e8a83d64ba3ca0e087a40cd646",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "aim_node",
+          "description": "Steer a tuned node to the requested heading.",
+          "parameters": {
+            "type": "object",
+            "properties": {"heading": {"type": "string", "enum": ["north", "south"]}},
+            "required": ["heading"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "preconditions": [
+        {
+          "id": "bound",
+          "fact": "node.bound",
+          "equals": true,
+          "on_unknown": {"operation_id": "node.scan"},
+          "on_false": {"operation_id": "node.bind"}
+        },
+        {
+          "id": "tuned",
+          "fact": "node.tuned",
+          "equals": true,
+          "on_unknown": {"operation_id": "node.scan"},
+          "on_false": {"operation_id": "node.tune"}
+        }
+      ],
+      "effects": [{"set_from_argument": {"fact": "node.heading", "argument": "heading"}}],
+      "commitments": [
+        {
+          "id": "heading-en",
+          "contains_any": ["aim", "steer"],
+          "arguments": {
+            "heading": {"enum_mentions": {"north": ["north"], "south": ["south"]}}
+          }
+        }
+      ],
+      "idempotent": true,
+      "retry": {"max_attempts": 1, "allowed_codes": ["transient_failure"]}
+    },
+    {
+      "operation_id": "node.finish",
+      "role": "terminal",
+      "schema_sha256": "3b52af29f471eb54fe578ffb65f5d7de67610a3afe91ce5137ce3d12a27664de",
+      "tool": {
+        "type": "function",
+        "function": {
+          "name": "finish_node_task",
+          "description": "Finish after all requested node changes are complete.",
+          "parameters": {
+            "type": "object",
+            "properties": {"summary": {"type": "string"}},
+            "required": ["summary"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "preconditions": [],
+      "effects": [],
+      "commitments": [],
+      "idempotent": false,
+      "retry": {"max_attempts": 0, "allowed_codes": []}
+    }
+  ]
+}

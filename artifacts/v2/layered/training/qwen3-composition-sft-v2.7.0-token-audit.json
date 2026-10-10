@@ -1,0 +1,20 @@
+{
+  "format_version": "deviceops-ul-sft-token-audit-v1.1",
+  "record_count": 1920,
+  "max_length": 2304,
+  "min_tokens": 938,
+  "p50_tokens": 1497,
+  "p95_tokens": 2014,
+  "max_tokens": 2145,
+  "prompt_token_count": 2787080,
+  "completion_token_count": 68970,
+  "min_completion_tokens": 25,
+  "max_completion_tokens": 63,
+  "records_with_zero_completion_tokens": 0,
+  "prompt_prefix_mismatch_count": 0,
+  "completion_only_loss_verified": true,
+  "truncation_count": 0,
+  "truncation_rate": 0.0,
+  "dataset_sha256": "accb304b00cbfb6503835a7d6f03a56a5b43e0c899adbbc693266673166c94e2",
+  "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e"
+}

@@ -1,0 +1,50 @@
+{
+  "correction_repeats": 8,
+  "correction_source_record_count": 53,
+  "curriculum_source_counts": {
+    "failed-task-oracle": 258,
+    "failed-task-recovery": 40,
+    "qwen-v2.7-replay": 480,
+    "train-failure-correction": 424
+  },
+  "data_sha256": "71d535751a759044e6ef4df525308311a66b54d345ff90d1a527127b95e6d9cd",
+  "decision_counts": {
+    "apply_action": 372,
+    "finish_task": 70,
+    "inspect_relations": 75,
+    "inspect_target": 264,
+    "poll_action": 95,
+    "refuse_task": 50,
+    "request_user_action": 276
+  },
+  "dev_data_used": false,
+  "failed_task_count": 10,
+  "failed_task_ids": [
+    "v2c-train-dual_control-home-000",
+    "v2c-train-dual_control-workspace-000",
+    "v2c-train-cross_domain_chain-home-000",
+    "v2c-train-cross_domain_chain-workspace-000",
+    "v2c-train-dual_control-home-001",
+    "v2c-train-dual_control-vehicle-001",
+    "v2c-train-dual_control-workspace-001",
+    "v2c-train-cross_domain_chain-home-001",
+    "v2c-train-cross_domain_chain-vehicle-001",
+    "v2c-train-cross_domain_chain-workspace-001"
+  ],
+  "failure_run_sha256": "74ddf8303a10e85116eaf65ca6c85f1064491417be0aa7fc0fe0db3de2a51842",
+  "format_version": "deviceops-ul-v2-qwen-failure-refinement-manifest-v0.1",
+  "hard_oracle_repeats": 3,
+  "hard_oracle_source_record_count": 86,
+  "hidden_marker_count": 30,
+  "hidden_marker_leaks": 0,
+  "prompt_conflict_count": 0,
+  "protocol": "qwen-tool-native-v2-composition",
+  "record_count": 1202,
+  "recovery_repeats": 2,
+  "recovery_source_record_count": 20,
+  "replay_modulus": 4,
+  "replay_record_count": 480,
+  "sha256": "71d535751a759044e6ef4df525308311a66b54d345ff90d1a527127b95e6d9cd",
+  "suite_manifest_sha256": "a1c7ad0bc7282409e5102b3caf8af8112c05a745ef7b46b2d54727a974653abf",
+  "test_data_used": false
+}

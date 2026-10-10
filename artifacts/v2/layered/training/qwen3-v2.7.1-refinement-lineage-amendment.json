@@ -1,0 +1,43 @@
+{
+  "format_version": "deviceops-ul-v2-qwen-refinement-lineage-amendment-v0.1",
+  "status": "post-hoc-provenance-amendment",
+  "reason": "The original generated manifest bound the failure raw by SHA but omitted its path and did not bind the replay source or initial-stage adapter as named artifacts.",
+  "refinement_manifest": {
+    "path": "data/v2/qwen3-composition-refinement-sft-v2.7.1.manifest.json",
+    "sha256": "a813916212c7d79b4c12d19e636f101b75c18206bb819df695951a6bbe7ac3da",
+    "size_bytes": 1771
+  },
+  "failure_run": {
+    "path": "artifacts/v2/layered/runs/qwen3-1.7b-v2.7-sft-direct-train18-v0.1.jsonl",
+    "sha256": "74ddf8303a10e85116eaf65ca6c85f1064491417be0aa7fc0fe0db3de2a51842",
+    "size_bytes": 205214
+  },
+  "replay_source": {
+    "path": "data/v2/qwen3-composition-sft-v2.7.0.jsonl",
+    "sha256": "accb304b00cbfb6503835a7d6f03a56a5b43e0c899adbbc693266673166c94e2",
+    "size_bytes": 12847170
+  },
+  "initial_stage": {
+    "adapter_path": "artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1",
+    "weights": {
+      "path": "artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1/adapter_model.safetensors",
+      "sha256": "937855a92c05eb46edaee2aa580a612356f007c1907251f65c0094b8a26d41e9",
+      "size_bytes": 34917504
+    },
+    "training_result": {
+      "path": "artifacts/checkpoints/qwen3-1.7b-deviceops-v2.7-composition-qlora-v0.1/device_agent_arena_training_result.json",
+      "sha256": "afaf9b4328efcbb8ea73ec24fc52a81259a34f132254ec2ecc03f59605a7181d",
+      "size_bytes": 3534
+    }
+  },
+  "record_counts": {
+    "total": 1202,
+    "unique_prompts": 565,
+    "observed_deviation_states": 53,
+    "repeated_corrections": 424,
+    "failed_task_oracle": 258,
+    "failed_task_recovery": 40,
+    "fixed_replay": 480
+  },
+  "claim_boundary": "1202 is a curriculum-record count over 565 unique prompts, not 1202 independent failure states."
+}

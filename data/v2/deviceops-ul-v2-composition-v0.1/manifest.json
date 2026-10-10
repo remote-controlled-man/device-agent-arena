@@ -1,0 +1,46 @@
+{
+  "files": {
+    "dev": {
+      "domain_counts": {
+        "home": 18,
+        "vehicle": 18,
+        "workspace": 18
+      },
+      "path": "dev.jsonl",
+      "record_count": 54,
+      "sha256": "9ddfc87c787b107ead4be1af235a932b49b04b4e968554c919e23b0e028de171",
+      "slice_counts": {
+        "composed_infeasible": 18,
+        "cross_domain_chain": 18,
+        "dual_control": 18
+      }
+    },
+    "train": {
+      "domain_counts": {
+        "home": 30,
+        "vehicle": 30,
+        "workspace": 30
+      },
+      "path": "train.jsonl",
+      "record_count": 90,
+      "sha256": "96a3d7ad67640eea0204a1149de72b29f40be7cf0892e0e3fdb03fa7d15650f8",
+      "slice_counts": {
+        "composed_infeasible": 30,
+        "cross_domain_chain": 30,
+        "dual_control": 30
+      }
+    }
+  },
+  "format_version": "deviceops-ul-v2-composition-suite-v0.1",
+  "root_seed": 20260902,
+  "scope": "dual-control, composed infeasibility, and cross-domain dependency topology",
+  "source_sha256": {
+    "task_generator": "b4155c488eea28c1f3beded805e077de114082f5b1d255ab5cce65a55fa9c983",
+    "task_model": "36ee9d8192aee51936414ef8ea2d29f006037a6fcd8e3db65d6f5cca61619cdc"
+  },
+  "test": {
+    "record_count": 90,
+    "seed_policy": "provided-only-after-full-v2-dev-gate",
+    "status": "locked"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "composition_repeats": 2,
+  "composition_source_record_count": 630,
+  "curriculum_source_counts": {
+    "composition-oracle": 1260,
+    "v2.3-replay": 725
+  },
+  "data_sha256": "04a8f0db31987b86047f30ad96333bd9af1e9b6d0d40d1bd7f7cf3af97333d01",
+  "decision_counts": {
+    "answer": 25,
+    "apply_action": 210,
+    "confirm": 50,
+    "finish_task": 150,
+    "inspect_relations": 180,
+    "inspect_target": 390,
+    "poll_action": 210,
+    "refuse": 25,
+    "refuse_task": 30,
+    "request_user_action": 90,
+    "tool": 625
+  },
+  "dev_data_used": false,
+  "format_version": "deviceops-ul-v2-composition-sft-manifest-v0.1",
+  "record_count": 1985,
+  "replay_modulus": 8,
+  "replay_record_count": 725,
+  "sha256": "04a8f0db31987b86047f30ad96333bd9af1e9b6d0d40d1bd7f7cf3af97333d01",
+  "suite_manifest_sha256": "a1c7ad0bc7282409e5102b3caf8af8112c05a745ef7b46b2d54727a974653abf",
+  "test_data_used": false
+}

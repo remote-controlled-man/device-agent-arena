@@ -1,0 +1,14 @@
+DeviceAgent Arena
+Copyright 2026 Sidi Huang
+
+The source code, project-authored documentation, synthetic benchmark definitions,
+and project-authored synthetic data included in the curated public release are
+licensed under Apache License 2.0 unless a file says otherwise.
+
+Model weights are not covered by this license and are not included in the curated
+public release. Qwen3-1.7B is distributed by Qwen under Apache License 2.0.
+FunctionGemma is distributed by Google under the Gemma Terms of Use. Users must
+obtain model files from their original distributors and comply with those terms.
+
+Qwen, FunctionGemma, Gemma, Hugging Face, PyTorch, Transformers, TRL, and PEFT
+are names of their respective owners. Their mention does not imply endorsement.
